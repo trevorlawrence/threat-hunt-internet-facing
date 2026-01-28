@@ -76,6 +76,10 @@ DeviceLogonEvents
 
 | order by Attempts
 ```
+
+<img src="https://github.com/trevorlawrence/threat-hunt-internet-facing/blob/main/query-results/LogonAttempts.png"> 
+
+
 <ins>Analysis:</ins>
 
 The IP with the most attempts had 284 attempts. The next four highest were in the 80s.
@@ -103,6 +107,11 @@ DeviceLogonEvents
 | where RemoteIP has_any(RemoteIPsInQuestion)
 ```
 
+<img src="https://github.com/trevorlawrence/threat-hunt-internet-facing/blob/main/query-results/LogonSuccess.png"> 
+
 <ins>Analysis:</ins>
 
 There were no successful logons from the top ten IPs with the most attempts.
+
+---
+
