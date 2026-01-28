@@ -115,3 +115,40 @@ There were no successful logons from the top ten IPs with the most attempts.
 
 ---
 
+# 3. Findings & Discussion
+
+**Relevant MITRE ATT&CK TTPs**
+
+MITRE ATT&CK is a knowledge base for detecting, recognizing, preventing, and fighting cyber threats. "TTPs" are tactics, techniques, and procedures commonly used by bad actors. The MITRE ATT&CK TTPs relevant for this scenario are:
+```
+Brute Force (T1110)
+Valid Accounts (T1078)
+Remote Services (T1021)
+Lateral Movement (TA0008)
+```
+
+Brute forcing is the repetitive attempt to guess a username or password for an unknown login account. Based on the hundreds or dozens of attempts that several of our VM's threats made, we can confidently state that brute force methods were applied.
+
+The Valid Accounts TTP would only have applied if the bad actors successfully logged on, as they would have had access to a legitimate account on the VM and could have abused various resources and potentially bypassed access controls.
+
+Remote Services refers to the use of remote protocols to gain access to a system. 
+
+Remove public exposure from affected VMs.
+Reset compromised credentials.
+Enforce account lockout policies.
+Restrict inbound access using NSGs / firewall rules.
+Isolate affected systems if necessary.
+Review and harden authentication configurations.
+
+Areas to Evaluate
+Preventive controls (network exposure, authentication hardening)
+Logging coverage and retention
+Detection gaps
+Query efficiency
+Response readiness
+
+Example Questions
+Could this exposure have been prevented?
+Were alerts generated?
+What detections could be automated?
+What could make this hunt faster or more reliable next time?
