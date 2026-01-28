@@ -37,24 +37,29 @@ The following Microsoft Sentinel tables will be used:
 - *DeviceLogonEvents* – to analyze authentication attempts and outcomes
 
 
-Collection:
+<ins>Collection:</ins>
 
-<details> <summary>Show KQL Query</summary>
-```// Check logon logs for target machine
+```
+// Check logon logs for target machine
+
 DeviceLogonEvents
-| where DeviceName == "windows-target-1"
-| where Timestamp between(datetime(2026-01-01) .. now())
-| sort by Timestamp desc```
-</details>
 
-Analysis:
+| where DeviceName == "windows-target-1"
+
+| where Timestamp between(datetime(2026-01-01) .. now())
+
+| sort by Timestamp desc
+```
+
+<ins>Analysis:</ins>
 
 ```windows-target-1``` had been Internet-facing for several days in early January. Several bad actors were discovered attempting to log in.
 Last Internet-facing time: ```2026-01-05T23:03:08.2842198Z```
 
 
-Collection:
+<ins>Collection:</ins>
 
+```
 //Check for IPs with the most failed logons
 
 DeviceLogonEvents
@@ -70,8 +75,9 @@ DeviceLogonEvents
 | summarize Attempts = count() by ActionType, RemoteIP, DeviceName
 
 | order by Attempts
+```
+<ins>Analysis:</ins>
 
-Analysis:
 The IP with the most attempts had 284 attempts. The next four highest were in the 80s.
 The four Logontypes of concern are Network, Interactive, RemoteInteractive, and Unlock.
 - Network = access through the network, such as accessing a file share or lateral movement. If detected, we should check for unusual IPs or admin accounts.
@@ -79,9 +85,9 @@ The four Logontypes of concern are Network, Interactive, RemoteInteractive, and 
 - RemoteInteractive = remote logon (RDP). Check for first-time logons, after-hours access, or external IPs.
 - Unlock = access was performed by unlocking a workstation that is already logged in. Rarely used by attackers, mostly unhelpful.
 
-Collection:
+<ins>Collection:</ins>
 
-
+```
 //Check for any successful logons for IPs with the top 10 most logon attempts
 
 let RemoteIPsInQuestion = dynamic(["185.11.61.192","77.90.185.62","77.90.185.64","185.11.61.198","194.180.48.29","77.90.185.39","213.55.95.235","103.87.120.58","34.66.171.22","51.178.174.31"]);
@@ -95,10 +101,8 @@ DeviceLogonEvents
 | where ActionType == "LogonSuccess"
 
 | where RemoteIP has_any(RemoteIPsInQuestion)
+```
 
-Analysis:
+<ins>Analysis:</ins>
 
 There were no successful logons from the top ten IPs with the most attempts.
-
-
-
