@@ -21,7 +21,7 @@ If shared services VMs were exposed to the public internet, then:
 ---
 # 2. Data Collection & Analysis
 
-(For the purposes of this scenario, the Internet-facing VM is already known to us: "windows-target-1".)
+(For the purposes of this scenario, the Internet-facing VM is already known to us: ```windows-target-1```.)
 
 
 Collect sufficient telemetry to:
@@ -39,20 +39,18 @@ The following Microsoft Sentinel tables will be used:
 
 Collection:
 
-//Check logon logs for target machine
-
+<details> <summary>Show KQL Query</summary>
+```// Check logon logs for target machine
 DeviceLogonEvents
-
 | where DeviceName == "windows-target-1"
-
 | where Timestamp between(datetime(2026-01-01) .. now())
-
-| sort by Timestamp desc
+| sort by Timestamp desc```
+</details>
 
 Analysis:
 
-Windows-target-1 had been Internet-facing for several days in early January. Several bad actors were discovered attempting to log in.
-Last Internet-facing time: 2026-01-05T23:03:08.2842198Z
+```windows-target-1``` had been Internet-facing for several days in early January. Several bad actors were discovered attempting to log in.
+Last Internet-facing time: ```2026-01-05T23:03:08.2842198Z```
 
 
 Collection:
