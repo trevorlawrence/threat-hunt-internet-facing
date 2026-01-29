@@ -155,6 +155,8 @@ Organization security posture and policies should be evaluated. Are there any de
 
 All company employees should be re-trained on the importance of password strength and security. All systems are vulnerable, but human error is the most likely cause of breaches. If a password is too weak, too simple, too short, or used too frequently for different accounts, it is likely to be discovered through brute force or credential stuffing. The latter is when an exposed username and password from a data breach is used on a variety of websites or systems to gain access. If a company employee uses their company username and password combination for non-company logins and that information is exposed to the dark web or discovered in a data breach, it is likely to be used on any site with that username registered until one of them is accessed.
 
+Password policies specifically should be reviewed. NIST STIG 800-53 recommends several best practices for this such as password complexity, password length, how passwords are stored and hashed, how passwords are transmitted, and account lockouts after several failed login attempts.
+
 ---
 
 # 4. Conclusion
