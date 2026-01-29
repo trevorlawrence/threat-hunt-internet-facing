@@ -11,6 +11,11 @@ During routine infrastructure maintenance, concerns were raised that one or more
 
 Several systems in the environment do not enforce strict account lockout policies after repeated failed login attempts, increasing the risk of successful credential brute-forcing.
 
+
+<img width="1536" height="1024" alt="75343de8-da40-49c8-a8fb-251e275a5ea5" src="https://github.com/user-attachments/assets/292fe60a-45b8-4262-8863-59c29ded2a16" />
+
+
+
 ## Hypothesis
 
 If shared services VMs were exposed to the public internet, then:
